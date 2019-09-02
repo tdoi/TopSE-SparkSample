@@ -10,10 +10,7 @@ object UpperWords {
       val rdd = sc.parallelize(strList, 2)
       val upperedRDD = rdd.map(str => str.toUpperCase)
       val upperedList = upperedRDD.collect
-      val file = new PrintWriter("/var/tmp/uppers.txt")
-      processedRDD.collect.foreach { case (word, count) => file.write(word + ":" + count + "\n") }
-      file.close()
-//      upperedList.foreach(println)
+      upperedList.foreach(println)
     } finally {
       sc.stop()
     }

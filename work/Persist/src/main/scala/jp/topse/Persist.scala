@@ -14,7 +14,6 @@ object Persist {
         d => Thread.sleep(5000)
         d
       }
-//      heavyRDD.persist(MEMORY_ONLY)
 
       var start = System.currentTimeMillis
       heavyRDD.count
