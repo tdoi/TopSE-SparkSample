@@ -1,10 +1,12 @@
 package jp.topse
 
+import java.io.PrintWriter
 import org.apache.spark.SparkContext
 
 object WordCount {
+
   def main(args: Array[String]) {
-    val sc = new SparkContext("local[*]", "WordCount")
+    val sc = new SparkContext("spark://master:7077", "WordCount")
     try {
       val fileRDD = sc.textFile(args(0))
       val processedRDD = fileRDD
