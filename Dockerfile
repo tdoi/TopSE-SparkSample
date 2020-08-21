@@ -5,10 +5,13 @@ RUN apt-get install -y wget vim
 
 RUN apt-get install -y openjdk-8-jdk
 
+ARG SPARK_VERSION=2.4.6
+ARG HADOOP_VERSION=2.7
+
 WORKDIR /opt
-RUN wget ftp://ftp.kddilabs.jp/infosystems/apache/spark/spark-2.4.3/spark-2.4.3-bin-hadoop2.7.tgz
-RUN tar xzf spark-2.4.3-bin-hadoop2.7.tgz
-RUN ln -s /opt/spark-2.4.3-bin-hadoop2.7 /opt/spark
+RUN wget -q http://apache.mirror.iphh.net/spark/spark-${SPARK_VERSION}/spark-${SPARK_VERSION}-bin-hadoop${HADOOP_VERSION}.tgz
+RUN tar xzf spark-${SPARK_VERSION}-bin-hadoop${HADOOP_VERSION}.tgz
+RUN ln -s /opt/spark-${SPARK_VERSION}-bin-hadoop${HADOOP_VERSION} /opt/spark
 RUN echo "export PATH=${PATH}:/opt/spark/bin" >> /root/.bashrc
 
 RUN apt-get install -y gnupg
