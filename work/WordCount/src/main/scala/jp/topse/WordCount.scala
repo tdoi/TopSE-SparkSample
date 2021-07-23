@@ -13,7 +13,7 @@ object WordCount {
         .flatMap(elem => elem.split(" "))
         .filter(elem => !elem.isEmpty)
         .map(elem => (elem.toLowerCase, 1))
-        .reduceByKey((sum, elem) => sum + elem)
+        .reduceByKey((sum, elem) => sum + elem, 3)
 
       processedRDD.saveAsTextFile(args(1))
     } finally {
